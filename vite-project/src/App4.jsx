@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 function App4(){
+    // harcoded database
     const [todos, setTodos] = useState([{
         title: "bla bla",
         description: "do bla bla",
@@ -11,8 +12,9 @@ function App4(){
         completed: true
     }])
 
-
     return(
+        // a button to add a new todo by giving props of todos, setTodos
+        // a list of todos
         <div>
             <AddTodo todos={todos} setTodos={setTodos}/>
             {todos.map(function(todo){
@@ -24,7 +26,10 @@ function App4(){
     )
 }
 
+
+
 function Todo({title, description}){
+    // returns the list of todo however I want to see them
     return(
         <>
             <div>{title}</div>
@@ -34,11 +39,16 @@ function Todo({title, description}){
     )
 }
 
+
+
 function AddTodo({todos, setTodos}){
+    // adds a newTodo by taking the props of todos, setTodos
+    // declared states for title and description
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
 
     function addTodo(){
+        // adds a newTodo by taking the props of todos, setTodos
         setTodos([...todos, {
             title: title,
             description: description,
@@ -51,6 +61,8 @@ function AddTodo({todos, setTodos}){
     }
 
     return(
+        // takes the input of title and description and changes it using onChange
+        // value={title} is used to clear the input box, and take a new todo input
         <div>
             <input type="text" placeholder="title"
                 value={title}
@@ -64,7 +76,7 @@ function AddTodo({todos, setTodos}){
                 setDescription(e.target.value)
             }}
             />
-            <button onClick={addTodo}>Add Todo</button>
+            <button onClick={addTodo}>Add Todo</button>     
         </div>
     )
 }
